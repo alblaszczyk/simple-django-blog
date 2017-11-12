@@ -27,7 +27,7 @@ class Post(models.Model):
             unique_slug = '{}-{}'.format(slug, num)
             num += 1
         return unique_slug
-
+    
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = self._get_unique_slug()
