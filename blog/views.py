@@ -70,13 +70,13 @@ def add_comment_to_post(request, slug):
     return render(request, 'blog/add_comment_to_post.html', {'form': form})
 
 @login_required
-def comment_approve(request, slug):
-    comment = get_object_or_404(Comment, slug=slug)
+def comment_approve(request, pk):
+    comment = get_object_or_404(Comment, pk=pk)
     comment.approve()
     return redirect('post_detail', slug=comment.post.slug)
 
 @login_required
-def comment_remove(request, slug):
-    comment = get_object_or_404(Comment, slug=slug)
+def comment_remove(request, pk):
+    comment = get_object_or_404(Comment, pk=pk)
     comment.delete()
     return redirect('post_detail', slug=comment.post.slug)
